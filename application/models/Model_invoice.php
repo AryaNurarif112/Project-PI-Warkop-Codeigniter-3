@@ -78,4 +78,18 @@ class Model_invoice extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    //untuk merubah status sudah dibayar atau belum
+    public function setpaid($idinv)
+    {
+        $this->db->set('is_paid', '1');
+        $this->db->where('id', $idinv);
+        $this->db->update('tb_invoice');
+    }
+    public function setunpaid($idinv)
+    {
+        $this->db->set('is_paid', '0');
+        $this->db->where('id', $idinv);
+        $this->db->update('tb_invoice');
+    }
 }

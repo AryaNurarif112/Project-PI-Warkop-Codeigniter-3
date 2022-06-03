@@ -7,7 +7,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('welcome') ?>">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-store"></i>
                 </div>
@@ -131,32 +131,33 @@
                                     <div class="">History Belanja</div>
                                 </a>
                             </li>
-                            <div class="navbar">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="mr-3 mb-2">
-                                        <a href="https://wa.me/6282135888258?text=Silahkan bayar dan upload bukti pembayaran sesuai pesanan ">
-                                            <div class="">Upload Bukti Pembayaran</div>
-                                        </a>
-                                    </li>
+                        </div>
+                        <div class="navbar">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="mr-3 mb-2">
+                                    <a href="https://wa.me/6282135888258?text=Silahkan bayar dan upload bukti pembayaran sesuai pesanan ">
+                                        <div class="">Upload Bukti Pembayaran</div>
+                                    </a>
+                                </li>
 
+                                <li>
+                                    <!-- <img src="<?php echo base_url('assets/img/keranjang.svg'); ?>"> -->
+                                    <?php $keranjangs = "<img src='" . base_url('assets/img/keranjang.svg') . "'/>" . " {$this->cart->total_items()} items" ?>
+                                    <?php echo anchor('dashboard/detail_keranjang', $keranjangs) ?>
+                                </li>
+                            </ul>
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                            <ul class="na navbar-nav navbar-right">
+                                <?php if ($this->session->userdata('username')) { ?>
                                     <li>
-                                        <!-- <img src="<?php echo base_url('assets/img/keranjang.svg'); ?>"> -->
-                                        <?php $keranjangs = "<img src='" . base_url('assets/img/keranjang.svg') . "'/>" . " {$this->cart->total_items()} items" ?>
-                                        <?php echo anchor('dashboard/detail_keranjang', $keranjangs) ?>
+                                        <div>Hi <?php echo $this->session->userdata('username') ?></div>
                                     </li>
-                                </ul>
-                                <div class="topbar-divider d-none d-sm-block"></div>
-                                <ul class="na navbar-nav navbar-right">
-                                    <?php if ($this->session->userdata('username')) { ?>
-                                        <li>
-                                            <div>Hi <?php echo $this->session->userdata('username') ?></div>
-                                        </li>
-                                        <li class="ml-2"><?php echo anchor('auth/logout', 'Logout') ?></li>
-                                    <?php } else { ?>
-                                        <li><?php echo anchor('auth/login', 'Login'); ?></li>
-                                    <?php } ?>
-                                </ul>
-                            </div>
+                                    <li class="ml-2"><?php echo anchor('auth/logout', 'Logout') ?></li>
+                                <?php } else { ?>
+                                    <li><?php echo anchor('auth/login', 'Login'); ?></li>
+                                <?php } ?>
+                            </ul>
+                        </div>
 
                     </ul>
 

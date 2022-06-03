@@ -33,4 +33,17 @@ class Invoice extends CI_Controller
         $this->load->view('admin/detail_invoice', $data);
         $this->load->view('templates_admin/footer');
     }
+
+    //merubah status pembayaran antara sudah dibayar atau belum
+    public function setpaid($id_invoice)
+    {
+        $this->Model_invoice->setpaid($id_invoice);
+        redirect('admin/invoice');
+    }
+
+    public function setunpaid($id_invoice)
+    {
+        $this->Model_invoice->setunpaid($id_invoice);
+        redirect('admin/invoice');
+    }
 }

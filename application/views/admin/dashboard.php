@@ -9,11 +9,11 @@
                 <img src="<?php echo base_url('assets/img/slider2.jpg'); ?>" class="d-block w-100" alt="...">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-target="#carouselExampleInterval" data-slide="prev">
+        <button class="carousel-control-prev border-0" type="button" data-target="#carouselExampleInterval" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-target="#carouselExampleInterval" data-slide="next">
+        <button class="carousel-control-next border-0" type="button" data-target="#carouselExampleInterval" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </button>
@@ -21,13 +21,11 @@
     <div class="row text-center mt-4">
         <?php foreach ($barang as $brg) : ?>
             <div class="card ml-3 mb-3" style="width: 16rem;">
-                <img src="<?= base_url('uploads/') . $brg['gambar']; ?>" class="card-img-top" alt="">
+                <img class="fotoproduk" src="<?= base_url('uploads/') . $brg['gambar']; ?>" class="card-img-top" alt="">
                 <div class="card-body">
                     <h5 class="card-title mb-1"><?= $brg['nama_brg']; ?></h5>
                     <small><?= $brg['keterangan']; ?></small>
                     <span class="badge badge-success d-block py-2 mb-3 mt-2">Rp. <?php echo number_format($brg['harga'], 0, ',', '.') ?></span>
-                    <?php echo anchor('dashboard/tambah_ke_keranjang/' . $brg['id_brg'], '<div class="btn btn-sm btn-primary"> Masukin Keranjang</div>') ?>
-                    <?php echo anchor('dashboard/detail/' . $brg['id_brg'], '<div class="btn btn-sm btn-success">Detail</div>') ?>
 
                 </div>
             </div>

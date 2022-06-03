@@ -8,8 +8,8 @@
             <td>No Hape</td>
             <td>Tanggal Pemesanan</td>
             <td>Batas Pembayaran</td>
+            <td>Status</td>
             <td>Aksi</td>
-            <td>Status Pembayaran</td>
         </tr>
         <?php foreach ($invoice as $inv) : ?>
             <tr>
@@ -19,9 +19,24 @@
                 <td><?php echo $inv->no_hape ?></td>
                 <td><?php echo $inv->tgl_pesan ?></td>
                 <td><?php echo $inv->batas_bayar ?></td>
-                <td><?php echo anchor('admin/invoice/detail/' . $inv->id, '  <div class="btn btn-sm btn-primary">Detail</div>') ?>
+                <td><?= ($inv->is_paid) ? '<a href="" class="btn btn-success">Sudah Dibayar</a>' : '<a href="" class="btn btn-danger">Belum Bayar</a>' ?></td>
+                <td>
+                    <div class="dropdown mb-4">
+                        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Aksi
+                        </button>
+                        <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="invoice/detail/<?= $inv->id ?>">Detail</a>
+                            <?php if ($inv->is_paid == 0) { ?>
+                                <a class="dropdown-item" href="invoice/setpaid/<?= $inv->id ?>">Tandai sudah bayar</a>
+                            <?php } else { ?>
+                                <a class="dropdown-item" href="invoice/setunpaid/<?= $inv->id ?>">Tandai belum bayar</a>
+                            <?php } ?>
+                        </div>
+                    </div>
                 </td>
-                <td><?= ($inv->is_paid) ? "Sudah Dibayar" : "Belum Dibayar" ?></td>
+
+
             </tr>
         <?php endforeach; ?>
     </table>
