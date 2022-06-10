@@ -3,7 +3,6 @@ class Model_invoice extends CI_Model
 {
     public function index($invoice)
     {
-
         $this->db->insert('tb_invoice', $invoice);
         $id_invoice = $this->db->insert_id();
 
@@ -64,9 +63,7 @@ class Model_invoice extends CI_Model
         $this->db->select('*');
         $this->db->from('tb_invoice');
         $this->db->join('tb_tripay', 'tb_tripay.merchant_ref = tb_invoice.no_invoice', 'left');
-        // $this->db->join('tb_pesanan', 'tb_pesanan.id_invoice = tb_invoice.id', 'left');
         $this->db->where('tb_invoice.id', $idinv);
-        // $this->db->group_by('tb_invoice.id');
         $query = $this->db->get();
         return $query->result();
     }
@@ -91,5 +88,18 @@ class Model_invoice extends CI_Model
         $this->db->set('is_paid', '0');
         $this->db->where('id', $idinv);
         $this->db->update('tb_invoice');
+    }
+
+    public function rolepaid($roleid)
+    {
+        $this->db->set('role_id', '1');
+        $this->db->where('id', $roleid);
+        $this->db->update('tb_user');
+    }
+    public function roleunpaid($roleid)
+    {
+        $this->db->set('role_id', '2');
+        $this->db->where('id', $roleid);
+        $this->db->update('tb_user');
     }
 }

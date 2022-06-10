@@ -1,9 +1,15 @@
 <?php
+// kalau cuma satu kan query nya nanti pake row_array(), kalau lebih pake result_array(), kalau datanya lebih dari satu, pake foreach berarti
 class Model_barang extends CI_model
 {
     public function tampil_data()
     {
         return $this->db->get('tb_barang');
+    }
+
+    public function tampil_user()
+    {
+        return $this->db->get('tb_user');
     }
 
     public function tambah_barang($data, $table)
