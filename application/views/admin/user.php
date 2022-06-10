@@ -7,6 +7,7 @@
             <td>Username</td>
             <td>Password</td>
             <td>Role Id</td>
+            <td>Tanggal Pembuatan</td>
             <td>Rubah Aksi</td>
         </tr>
 
@@ -17,7 +18,7 @@
                 <td><?php echo $role['username']; ?></td>
                 <td><?php echo $role['password']; ?></td>
                 <td><?php echo $role['role_id']; ?></td>
-
+                <td><?php echo date('d F Y, H:i:s', $role['date_created']); ?></td>
                 <td>
                     <div class="dropdown mb-4">
                         <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
