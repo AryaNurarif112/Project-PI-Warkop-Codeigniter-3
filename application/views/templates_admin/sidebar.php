@@ -27,6 +27,11 @@
             <hr class="sidebar-divider">
             <!-- Nav Item - Tables -->
             <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('admin/Data_user') ?>">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>User</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('admin/Data_barang'); ?>">
                     <i class="fas fa-fw fa-database"></i>
                     <span>Data Makanan</span></a>
@@ -36,6 +41,7 @@
                     <i class="fas fa-fw fa-file-invoice"></i>
                     <span>Invoices</span></a>
             </li>
+
             <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>
 
             <!-- Divider -->
