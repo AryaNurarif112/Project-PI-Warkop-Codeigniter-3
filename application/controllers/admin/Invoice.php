@@ -46,4 +46,17 @@ class Invoice extends CI_Controller
         $this->Model_invoice->setunpaid($id_invoice);
         redirect('admin/invoice');
     }
+
+
+    public function rolepaid($tb_user)
+    {
+        $this->Model_invoice->rolepaid($tb_user);
+        redirect('admin/Data_user');
+    }
+
+    public function roleunpaid($tb_user)
+    {
+        $this->Model_invoice->roleunpaid($tb_user);
+        redirect('admin/Data_user');
+    }
 }
