@@ -1,5 +1,5 @@
 <?php
-
+// kalau cuma satu kan query nya nanti pake row_array(), kalau lebih pake result_array(), kalau datanya lebih dari satu, pake foreach berarti
 class Model_auth extends CI_Model
 {
     public function cek_login()
