@@ -20,8 +20,7 @@ class Dashboard extends CI_Controller
     {
         $this->load->model('Model_barang');
         $data['title'] = 'Profile User';
-        $data['user'] = $this->db->get_where('tb_user', ['id' =>
-        $this->session->userdata('id')])->row_array();
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('my_profile', $data);
@@ -30,6 +29,8 @@ class Dashboard extends CI_Controller
 
     public function edit_profile()
     {
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('username', 'Username', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->model('Model_barang');
             $data['title'] = 'Edit Profile User';
@@ -44,9 +45,15 @@ class Dashboard extends CI_Controller
 
             $this->db->set('nama', $nama);
             $this->db->set('username', $username);
+            $this->db->where('id', $this->session->userdata('id'));
             $this->db->update('tb_user');
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert"></div>');
-            redirect('tb_user');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Data Berhasil Diubah!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>');
+            redirect('dashboard/edit_profile');
         }
     }
 
@@ -55,6 +62,7 @@ class Dashboard extends CI_Controller
         $this->load->model('Model_barang');
         $data['title'] = 'Edit Password User';
         $data['user'] = $this->Model_barang->edit_password()->result_array();
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('edit_password', $data);
@@ -78,6 +86,7 @@ class Dashboard extends CI_Controller
     public function detail_keranjang()
     {
         $data['title'] = 'Detail Keranjang';
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('keranjang', $data);
@@ -93,6 +102,7 @@ class Dashboard extends CI_Controller
     public function pembayaran()
     {
         $data['title'] = 'Pembayaran';
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('pembayaran', $data);
@@ -134,6 +144,7 @@ class Dashboard extends CI_Controller
     {
         $data['title'] = 'History';
         $data['invoice'] = $this->Model_invoice->history();
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('history', $data);
@@ -145,6 +156,7 @@ class Dashboard extends CI_Controller
         $data['title'] = 'Detail History';
         $data['detail'] = $this->Model_invoice->detail_history($idinv);
         $data['detailproduk'] = $this->Model_invoice->detail_produk($idinv);
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -156,6 +168,7 @@ class Dashboard extends CI_Controller
     {
         $data['title'] = 'Detail Barang';
         $data['barang'] = $this->Model_barang->detail_brg($id_brg);
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('detail_barang', $data);
@@ -166,6 +179,7 @@ class Dashboard extends CI_Controller
         $data['title'] = 'Search';
         $keyword = $this->input->post('keyword');
         $data['barang'] = $this->Model_barang->search($keyword);
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('search', $data);
@@ -175,6 +189,7 @@ class Dashboard extends CI_Controller
     public function bayaran()
     {
         $data['title'] = 'Bayaran';
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('proses_pesanan', $data);
