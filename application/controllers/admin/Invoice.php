@@ -17,21 +17,23 @@ class Invoice extends CI_Controller
     }
     public function index()
     {
+        $data['title'] = 'Admin Invoice';
         $data['invoice'] = $this->Model_invoice->tampil_data();
-        $this->load->view('templates_admin/header');
-        $this->load->view('templates_admin/sidebar');
+        $this->load->view('templates_admin/header', $data);
+        $this->load->view('templates_admin/sidebar', $data);
         $this->load->view('admin/invoice', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('templates_admin/footer', $data);
     }
 
     public function detail($id_invoice)
     {
+        $data['title'] = 'Admin Invoice Detail';
         $data['invoice'] = $this->Model_invoice->ambil_id_invoice($id_invoice);
         $data['pesanan'] = $this->Model_invoice->ambil_id_pesanan($id_invoice);
-        $this->load->view('templates_admin/header');
-        $this->load->view('templates_admin/sidebar');
+        $this->load->view('templates_admin/header', $data);
+        $this->load->view('templates_admin/sidebar', $data);
         $this->load->view('admin/detail_invoice', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('templates_admin/footer', $data);
     }
 
     //merubah status pembayaran antara sudah dibayar atau belum

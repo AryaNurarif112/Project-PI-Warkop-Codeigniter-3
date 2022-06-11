@@ -18,6 +18,7 @@ class Model_invoice extends CI_Model
         }
         return TRUE;
     }
+
     public function tampil_data()
     {
         $query = $this->db->get('tb_invoice');

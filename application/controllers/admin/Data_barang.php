@@ -18,11 +18,12 @@ class Data_barang extends CI_Controller
 
     public function index()
     {
+        $data['title'] = 'Data Barang';
         $data['barang'] = $this->Model_barang->tampil_data()->result();
-        $this->load->view('templates_admin/header');
-        $this->load->view('templates_admin/sidebar');
+        $this->load->view('templates_admin/header', $data);
+        $this->load->view('templates_admin/sidebar', $data);
         $this->load->view('admin/data_barang', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('templates_admin/footer', $data);
     }
     public function tambah_aksi()
     {
@@ -55,22 +56,24 @@ class Data_barang extends CI_Controller
     }
     public function edit($id)
     {
+        $data['title'] = 'Edit Barang';
         $where = array('id_brg' => $id);
         $data['barang'] = $this->Model_barang->edit_barang($where, 'tb_barang')->result();
-        $this->load->view('templates_admin/header');
-        $this->load->view('templates_admin/sidebar');
+        $this->load->view('templates_admin/header', $data);
+        $this->load->view('templates_admin/sidebar', $data);
         $this->load->view('admin/edit_barang', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('templates_admin/footer', $data);
     }
 
     public function detail_barang()
     {
+        $data['title'] = 'Detail Barang';
         $where = array('id_brg');
         $data['barang'] = $this->Model_barang->detail_barang($where, 'tb_barang')->result();
-        $this->load->view('templates_admin/header');
-        $this->load->view('templates_admin/sidebar');
+        $this->load->view('templates_admin/header', $data);
+        $this->load->view('templates_admin/sidebar', $data);
         $this->load->view('admin/detail_barang', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('templates_admin/footer', $data);
     }
 
     public function update()

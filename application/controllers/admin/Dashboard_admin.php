@@ -18,11 +18,12 @@ class Dashboard_admin extends CI_Controller
 
     public function index()
     {
+        $data['title'] = 'Dashboard Admin';
         $this->load->model('Model_barang');
         $data['barang'] = $this->Model_barang->tampil_data()->result_array();
-        $this->load->view('templates_admin/header');
-        $this->load->view('templates_admin/sidebar');
+        $this->load->view('templates_admin/header', $data);
+        $this->load->view('templates_admin/sidebar', $data);
         $this->load->view('admin/dashboard', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('templates_admin/footer', $data);
     }
 }

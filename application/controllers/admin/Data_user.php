@@ -18,11 +18,12 @@ class Data_user extends CI_Controller
 
     public function index()
     {
+        $data['title'] = 'Data User ';
         $this->load->model('Model_barang');
         $data['user'] = $this->Model_barang->tampil_user()->result_array();
-        $this->load->view('templates_admin/header');
-        $this->load->view('templates_admin/sidebar');
+        $this->load->view('templates_admin/header', $data);
+        $this->load->view('templates_admin/sidebar', $data);
         $this->load->view('admin/user', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('templates_admin/footer', $data);
     }
 }

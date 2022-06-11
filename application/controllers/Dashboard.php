@@ -19,12 +19,13 @@ class Dashboard extends CI_Controller
     public function my_profile()
     {
         $this->load->model('Model_barang');
+        $data['title'] = 'Profile User';
         $data['user'] = $this->db->get_where('tb_user', ['id' =>
         $this->session->userdata('id')])->row_array();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
         $this->load->view('my_profile', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer', $data);
     }
 
     public function edit_profile()
@@ -33,10 +34,10 @@ class Dashboard extends CI_Controller
             $this->load->model('Model_barang');
             $data['title'] = 'Edit Profile User';
             $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
-            $this->load->view('templates/header');
-            $this->load->view('templates/sidebar');
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
             $this->load->view('edit_profile', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data);
         } else {
             $nama = $this->input->post('nama');
             $username = $this->input->post('username');
@@ -54,10 +55,10 @@ class Dashboard extends CI_Controller
         $this->load->model('Model_barang');
         $data['title'] = 'Edit Password User';
         $data['user'] = $this->Model_barang->edit_password()->result_array();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
         $this->load->view('edit_password', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer', $data);
     }
 
     public function tambah_ke_keranjang($id)
@@ -76,10 +77,11 @@ class Dashboard extends CI_Controller
 
     public function detail_keranjang()
     {
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
-        $this->load->view('keranjang');
-        $this->load->view('templates/footer');
+        $data['title'] = 'Detail Keranjang';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('keranjang', $data);
+        $this->load->view('templates/footer', $data);
     }
 
     public function hapus_keranjang()
@@ -90,10 +92,11 @@ class Dashboard extends CI_Controller
 
     public function pembayaran()
     {
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
-        $this->load->view('pembayaran');
-        $this->load->view('templates/footer');
+        $data['title'] = 'Pembayaran';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('pembayaran', $data);
+        $this->load->view('templates/footer', $data);
     }
 
     public function proses_pesanan()
@@ -129,47 +132,52 @@ class Dashboard extends CI_Controller
     }
     public function history()
     {
+        $data['title'] = 'History';
         $data['invoice'] = $this->Model_invoice->history();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
         $this->load->view('history', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer', $data);
     }
     public function detail_history()
     {
         $idinv = $this->uri->segment(3);
+        $data['title'] = 'Detail History';
         $data['detail'] = $this->Model_invoice->detail_history($idinv);
         $data['detailproduk'] = $this->Model_invoice->detail_produk($idinv);
 
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
         $this->load->view('history_barang', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer', $data);
     }
 
     public function detail($id_brg)
     {
+        $data['title'] = 'Detail Barang';
         $data['barang'] = $this->Model_barang->detail_brg($id_brg);
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
         $this->load->view('detail_barang', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer', $data);
     }
     public function search()
     {
+        $data['title'] = 'Search';
         $keyword = $this->input->post('keyword');
         $data['barang'] = $this->Model_barang->search($keyword);
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
         $this->load->view('search', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer', $data);
     }
 
     public function bayaran()
     {
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
-        $this->load->view('proses_pesanan');
-        $this->load->view('templates/footer');
+        $data['title'] = 'Bayaran';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('proses_pesanan', $data);
+        $this->load->view('templates/footer', $data);
     }
 }

@@ -5,7 +5,7 @@
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="col-xl-8 col-lg-12 col-md-9">
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
@@ -16,15 +16,18 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Form Login</h1>
                                     </div>
+
+                                    <?= $this->session->flashdata('message'); ?>
+
                                     <?php echo $this->session->flashdata('pesan') ?>
                                     <form method="post" action="<?php echo base_url('auth/login'); ?>" class="user">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan Username Anda" name="username">
-                                            <?php echo form_error('username', '<div class="text-danger small ml-2">', '</div>'); ?>
+                                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan Username Anda" name="username" value="<?= set_value('username') ?>">
+                                            <?php echo form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Masukan Password Anda" name="password">
-                                            <?php echo form_error('password', '<div class="text-danger small ml-2">', '</div>'); ?>
+                                            <?php echo form_error('password', '<div class="text-danger small">', '</div>'); ?>
                                         </div>
                                         <button type="submit" class="btn btn-primary form-control">Login</button>
                                     </form>
