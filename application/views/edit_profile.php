@@ -2,6 +2,8 @@
 
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
+    <?= $this->session->flashdata('pesan'); ?>
+
     <div class="row">
         <div class="col-lg-8">
             <?= form_open_multipart('dashboard/edit_profile'); ?>
@@ -14,7 +16,7 @@
             <div class="form-group row">
                 <label for="username" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="username" name="username">
+                    <input type="text" class="form-control" id="username" name="username" value="<?= $user['username']; ?>">
                 </div>
             </div>
 
@@ -23,7 +25,7 @@
                     <button type="submit" class="btn btn-primary">Edit</button>
                 </div>
             </div>
-            </form>
+            <?= form_close(); ?>
         </div>
     </div>
 </div>

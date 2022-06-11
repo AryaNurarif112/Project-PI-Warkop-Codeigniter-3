@@ -22,6 +22,7 @@ class Dashboard_admin extends CI_Controller
         $data['barang'] = $this->Model_barang->tampil_data()->result_array();
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
+
         $this->load->view('admin/dashboard', $data);
         $this->load->view('templates_admin/footer');
     }
