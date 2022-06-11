@@ -47,6 +47,7 @@
         <?php
                 } else {
                     echo "<h4>Keranjang Belanja Anda Masih Kosong";
+                    base_url('welcome');
                 } ?>
         </div>
         <div class="col-md-2">

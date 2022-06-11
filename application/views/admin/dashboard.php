@@ -39,7 +39,7 @@
                                     User</div>
                                 <a href="<?php echo base_url('admin/Data_user') ?>">
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">Daftar User</div>
-                                    <? echo $this->db->count_all('tb_user'); ?>
+                                    <?php echo $this->db->count_all('tb_user'); ?>
                                 </a>
                             </div>
                             <div class="col-auto">
@@ -60,7 +60,7 @@
                                     Pembeli</div>
                                 <a href="<?php echo base_url('admin/invoice') ?>">
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">User Pembeli</div>
-                                    <? echo $this->db->count_all('tb_invoice'); ?>
+                                    <?php echo $this->db->count_all('tb_invoice'); ?>
                                 </a>
                             </div>
                             <div class="col-auto">
@@ -83,7 +83,7 @@
                                     <div class="col-auto">
                                         <a href="<?php echo base_url('admin/Data_barang') ?>">
                                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Total Barang Tersedia : </div>
-                                            <? echo $this->db->count_all('tb_barang'); ?>
+                                            <?php echo $this->db->count_all('tb_barang'); ?>
                                         </a>
                                     </div>
                                     <div class="col">

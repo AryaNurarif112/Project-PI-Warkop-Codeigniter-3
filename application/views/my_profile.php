@@ -29,10 +29,10 @@
             <td>Member Since : </td>
         </tr>
         <tr>
-            <td><?php echo $role['id'] ?></td>
-            <td><?php echo $role['nama']; ?></td>
-            <td><?php echo $role['username']; ?></td>
-            <td><?php echo $role['role_id']; ?></td>
-            <td><?php echo date('d F Y, H:i:s', $role['date_created']); ?></td>
+            <td><?php echo $user['id'] ?></td>
+            <td><?php echo $user['nama']; ?></td>
+            <td><?php echo $user['username']; ?></td>
+            <td><?php echo $user['role_id']; ?></td>
+            <td><?php echo date('d F Y, H:i:s', $user['date_created']); ?></td>
         </tr>
 </div>

@@ -6,6 +6,7 @@ class Kategori extends CI_Controller
     {
         $data['title'] = 'Makanan Utama';
         $data['makanan_utama'] = $this->Model_kategori->data_makanan_utama()->result_array();
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('makanan_utama', $data);
@@ -15,6 +16,7 @@ class Kategori extends CI_Controller
     {
         $data['title'] = 'Makanan Padat';
         $data['makanan_padat'] = $this->Model_kategori->data_makanan_padat()->result_array();
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('makanan_padat', $data);
@@ -24,6 +26,7 @@ class Kategori extends CI_Controller
     {
         $data['title'] = 'Minuman';
         $data['minuman'] = $this->Model_kategori->data_minuman()->result_array();
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('minuman', $data);
@@ -33,6 +36,7 @@ class Kategori extends CI_Controller
     {
         $data['title'] = 'Makanan Cemilan';
         $data['cemilan'] = $this->Model_kategori->data_cemilan()->result_array();
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('cemilan', $data);
@@ -42,6 +46,7 @@ class Kategori extends CI_Controller
     {
         $data['title'] = 'Indomie';
         $data['indomie'] = $this->Model_kategori->data_indomie()->result_array();
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('indomie', $data);
@@ -51,6 +56,7 @@ class Kategori extends CI_Controller
     {
         $data['title'] = 'Corndog';
         $data['corndog'] = $this->Model_kategori->data_corndog()->result_array();
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('corndog', $data);

@@ -19,13 +19,13 @@
                 <td><?php echo $psn->id_brg ?></td>
                 <td><?php echo $psn->nama_brg ?></td>
                 <td><?php echo $psn->jumlah ?></td>
-                <td><?php echo number_format($psn->harga), ',', '.' ?></td>
+                <td><?php echo number_format($psn->harga), '.' ?></td>
                 <td><?php echo number_format($subtotal, 0, ',', '.') ?></td>
             </tr>
         <?php endforeach; ?>
         <tr>
             <td colspan="4" align="right">Grand Total</td>
-            <td align="right">Rp. <?php echo number_format($total), ',', '.' ?></td>
+            <td align="right">Rp. <?php echo number_format($total),  '.' ?></td>
         </tr>
     </table>
 
