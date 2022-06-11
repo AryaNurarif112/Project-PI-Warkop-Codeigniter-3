@@ -34,5 +34,5 @@
                     </div>
                 </td>
             </tr>
-        <? endforeach; ?>
+        <?php endforeach; ?>
 </div>

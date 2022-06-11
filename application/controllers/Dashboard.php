@@ -19,8 +19,8 @@ class Dashboard extends CI_Controller
     public function my_profile()
     {
         $this->load->model('Model_barang');
-        $data['user'] = $this->db->get_where('tb_user', ['id' =>
-        $this->session->userdata('id')])->row_array();
+        $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
+
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
         $this->load->view('my_profile', $data);
@@ -29,6 +29,9 @@ class Dashboard extends CI_Controller
 
     public function edit_profile()
     {
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+
         if ($this->form_validation->run() == false) {
             $this->load->model('Model_barang');
             $data['title'] = 'Edit Profile User';
@@ -43,9 +46,16 @@ class Dashboard extends CI_Controller
 
             $this->db->set('nama', $nama);
             $this->db->set('username', $username);
+            $this->db->where('id', $this->session->userdata('id'));
             $this->db->update('tb_user');
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert"></div>');
-            redirect('tb_user');
+            // show notification with sweetalert
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Data Berhasil Diubah!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>');
+            redirect('dashboard/edit_profile');
         }
     }
 
