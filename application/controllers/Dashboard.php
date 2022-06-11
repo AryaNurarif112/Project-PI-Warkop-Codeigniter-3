@@ -15,6 +15,51 @@ class Dashboard extends CI_Controller
             redirect('auth/login');
         }
     }
+
+    public function my_profile()
+    {
+        $this->load->model('Model_barang');
+        $data['user'] = $this->db->get_where('tb_user', ['id' =>
+        $this->session->userdata('id')])->row_array();
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('my_profile', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function edit_profile()
+    {
+        if ($this->form_validation->run() == false) {
+            $this->load->model('Model_barang');
+            $data['title'] = 'Edit Profile User';
+            $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
+            $this->load->view('templates/header');
+            $this->load->view('templates/sidebar');
+            $this->load->view('edit_profile', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $nama = $this->input->post('nama');
+            $username = $this->input->post('username');
+
+            $this->db->set('nama', $nama);
+            $this->db->set('username', $username);
+            $this->db->update('tb_user');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert"></div>');
+            redirect('tb_user');
+        }
+    }
+
+    public function edit_password()
+    {
+        $this->load->model('Model_barang');
+        $data['title'] = 'Edit Password User';
+        $data['user'] = $this->Model_barang->edit_password()->result_array();
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('edit_password', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function tambah_ke_keranjang($id)
     {
         $barang = $this->Model_barang->find($id);

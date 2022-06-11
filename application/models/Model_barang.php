@@ -12,6 +12,21 @@ class Model_barang extends CI_model
         return $this->db->get('tb_user');
     }
 
+    public function my_profile()
+    {
+        return $this->db->where('tb_user');
+    }
+
+    public function edit_profile()
+    {
+        return $this->db->get('tb_user');
+    }
+
+    public function edit_password()
+    {
+        return $this->db->get('tb_user');
+    }
+
     public function tambah_barang($data, $table)
     {
         $this->db->insert($table, $data);
