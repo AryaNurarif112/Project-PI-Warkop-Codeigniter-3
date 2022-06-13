@@ -23,12 +23,6 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-            <!-- <li class="nav-item active">
-                <a class="nav-link" href="<?php echo base_url() ?>">
-                    <i class="fa-solid fa-key"></i>
-                    <span>Change Password</span></a>
-            </li> -->
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -131,7 +125,7 @@
                             </div>
                         </li>
                         <div class="navbar">
-                            <li class="mr-2 mb-2">
+                            <li class="mb-2">
                                 <a href="<?php echo base_url('dashboard/history') ?>">
                                     <div class="">History Belanja</div>
                                 </a>
@@ -152,33 +146,38 @@
                                 </li>
                             </ul>
                         </div>
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-800 large">Hi <?= $user['nama'] ?></span>
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="<?= base_url('dashboard/my_profile'); ?>">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-800"></i>
-                                    My Profile
+                        <?php if ($this->session->userdata('username')) { ?>
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mb-2  d-none d-lg-inline text-gray-800 large">Hi <?= $user['nama'] ?></span>
                                 </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?= base_url('dashboard/edit_profile') ?>">
-                                    <i class="fa-solid fa-user-pen fa-fw mr-2 text-gray-800"></i>
-                                    Edit Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?= base_url('dashboard/edit_password') ?>">
-                                    <i class="fa-solid fa-key fa-fw mr-2 text-gray-800"></i>
-                                    Change Password
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-800"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="<?= base_url('dashboard/my_profile'); ?>">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-800 large"></i>
+                                        My Profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="<?= base_url('dashboard/edit_profile') ?>">
+                                        <i class="fa-solid fa-user-pen fa-fw mr-2 text-gray-800 large"></i>
+                                        Edit Profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="<?= base_url('dashboard/edit_password') ?>">
+                                        <i class="fa-solid fa-key fa-fw mr-2 text-gray-800 large"></i>
+                                        Change Password
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-800 large"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+                        <?php } else { ?>
+                            <ul class="na navbar-nav navbar-right mt-2 mr-4">
+                                <li><?php echo anchor('auth/login', 'Login'); ?></li>
+                            <?php } ?>
+                            </ul>
                     </ul>
                 </nav>
