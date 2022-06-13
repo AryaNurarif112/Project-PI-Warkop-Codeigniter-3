@@ -61,7 +61,6 @@ class Dashboard extends CI_Controller
     {
         $data['title'] = 'Change Password';
         $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
-
         $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
         $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|matches[new_password2]');
         $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|matches[new_password1]');
@@ -73,10 +72,13 @@ class Dashboard extends CI_Controller
             $this->load->view('templates/footer',);
         } else {
             $current_password = $this->input->post('current_password');
-            $new_password = $this->input->post('new_password1'); // password salah
-            if (!password_verify($current_password, $data['tb_user']['password'])) {
+            $new_password = $this->input->post('new_password1');
+
+            $cek_password = $this->db->get_where('tb_user', array('id' => $this->session->userdata('id'), 'password' => $current_password));
+            // password salah
+            if (!$cek_password) {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Current Salah!
-                </div>');
+                </div>' . $current_password);
                 redirect('dashboard/edit_password');
             } else { //password tidak boleh sama
                 if ($current_password == $new_password) {
@@ -85,7 +87,7 @@ class Dashboard extends CI_Controller
                     redirect('dashboard/edit_password');
                 } else {
                     //password sudah ok
-                    $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+                    $password_hash = $new_password;
 
                     $this->db->set('password', $password_hash);
                     $this->db->where('id', $this->session->userdata('id'));
