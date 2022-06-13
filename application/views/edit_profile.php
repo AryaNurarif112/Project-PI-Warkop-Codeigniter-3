@@ -28,3 +28,12 @@
             <?= form_close(); ?>
         </div>
     </div>
+    <div align="right">
+        <a href="<?php echo base_url('welcome') ?>">
+            <div class="btn btn-sm btn-dark">Lanjutkan Belanja</div>
+            <a href="<?php echo base_url('dashboard/my_profile') ?>">
+                <div class="btn btn-sm btn-success">Profile Saya</div>
+                <a href="<?php echo base_url('dashboard/edit_password') ?>">
+                    <div class="btn btn-sm btn-primary">Ganti Password</div>
+                </a>
+    </div>

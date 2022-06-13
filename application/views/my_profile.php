@@ -36,3 +36,13 @@
             <td><?php echo date('d F Y, H:i:s', $user['date_created']); ?></td>
         </tr>
 </div>
+</table>
+<div align="right">
+    <a href="<?php echo base_url('welcome') ?>">
+        <div class="btn btn-sm btn-dark">Lanjutkan Belanja</div>
+        <a href="<?php echo base_url('dashboard/edit_profile') ?>">
+            <div class="btn btn-sm btn-success">Edit Profile</div>
+        </a>
+        <a href="<?php echo base_url('dashboard/edit_password') ?>">
+            <div class="btn btn-sm btn-primary">Ganti Password</div>
+</div>
