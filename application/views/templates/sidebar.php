@@ -2,7 +2,6 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -101,7 +100,6 @@
                             </div>
                         </div>
                     </form>
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -124,35 +122,41 @@
                                 </form>
                             </div>
                         </li>
-                        <div class="navbar">
-                            <li class="mb-2">
-                                <a href="<?php echo base_url('dashboard/history') ?>">
-                                    <div class="">History Belanja</div>
-                                </a>
-                            </li>
-                        </div>
-                        <div class="navbar">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="mr-3 mb-2">
-                                    <a href="https://wa.me/6282135888258?text=Silahkan bayar dan upload bukti pembayaran sesuai pesanan ">
-                                        <div class="">Upload Bukti Pembayaran</div>
-                                    </a>
-                                </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-primary" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="<?= base_url('assets/img/keranjang.svg') ?>" /> &nbsp
+                                <?= $this->cart->total_items(); ?> items
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="mb-2 mr-3 nav-item">
+                                        <a class="nav-link text-primary" href="<?php echo base_url('dashboard/history') ?>">
+                                            History Belanja
+                                        </a>
+                                    </li>
+                                    <li class="mb-2 mr-3 nav-item">
+                                        <a class="nav-link text-primary" href="https://wa.me/6282135888258?text=Silahkan bayar dan upload bukti pembayaran sesuai pesanan ">
+                                            Upload Bukti Pembayaran
+                                        </a>
+                                    </li>
+                                    <li class="mb-2 mr-3 nav-item text-primary">
 
-                                <li>
-                                    <!-- <img src="<?php echo base_url('assets/img/keranjang.svg'); ?>"> -->
-                                    <?php $keranjangs = "<img src='" . base_url('assets/img/keranjang.svg') . "'/>" . " {$this->cart->total_items()} items" ?>
-                                    <?php echo anchor('dashboard/detail_keranjang', $keranjangs) ?>
-                                </li>
-                            </ul>
-                        </div>
+                                        <a href="<?php echo ('dashboard/detail_keranjang') ?>" class="nav-link text-primary">
+                                            <img src="<?= base_url('assets/img/keranjang.svg') ?>" /> &nbsp
+                                            <?= $this->cart->total_items(); ?> items
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                         <?php if ($this->session->userdata('username')) { ?>
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mb-2  d-none d-lg-inline text-gray-800 large">Hi <?= $user['nama'] ?></span>
+                                    <i class="fas fa-user fa-sm"></i> &nbsp;
+                                    <span class="d-none d-lg-inline text-gray-800 large">Hi <?= $user['nama'] ?></span>
                                 </a>
                                 <!-- Dropdown - User Information -->
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="userDropdown">
                                     <a class="dropdown-item" href="<?= base_url('dashboard/my_profile'); ?>">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-800 large"></i>
                                         My Profile
