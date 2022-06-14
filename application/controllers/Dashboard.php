@@ -100,7 +100,6 @@ class Dashboard extends CI_Controller
             }
         }
     }
-
     public function edit_password()
     {
         $this->load->model('Model_barang');
@@ -155,34 +154,69 @@ class Dashboard extends CI_Controller
 
     public function proses_pesanan()
     {
-        date_default_timezone_set('Asia/Jakarta');
-        $id_user = $this->session->userdata('id');
-        $nama = $this->input->post('nama');
-        $alamat = $this->input->post('alamat');
-        $no_hape = $this->input->post('no_telp');
-        $no_invoice = date('YmdHis');
-        $returnurl = base_url();
-        $invoice = array(
-            'id_user' => $id_user,
-            'no_invoice' => $no_invoice,
-            'nama' => $nama,
-            'alamat' => $alamat,
-            'no_hape' => $no_hape,
-            'tgl_pesan' => date('Y-m-d H:i:s'),
-            'batas_bayar' => date('Y-m-d H:i:s', mktime(
-                date('H'),
-                date('i'),
-                date('s'),
-                date('m'),
-                date('d') + 1,
-                date('Y')
-            )),
-            'is_paid' => false,
-        );
-        $this->Model_invoice->index($invoice); //save invoice
+        $this->load->helper(array('form', 'url'));
 
-        $this->cart->destroy();
-        redirect('dashboard/bayaran');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama',
+            'required|alpha_numeric',
+            array('required' => 'Nama tidak boleh kosong')
+        );
+        $this->form_validation->set_rules(
+            'alamat',
+            'Alamat',
+            'required|alpha_numeric',
+            array(
+                'required' => 'Alamat tidak boleh kosong'
+            )
+        );
+        $this->form_validation->set_rules(
+            'no_telp',
+            'No Hape',
+            'required|numeric',
+            array(
+                'required' => 'No telp tidak boleh kosong'
+            )
+        );
+        if ($this->form_validation->run() == FALSE) {
+            $data['title'] = 'Pembayaran';
+            $data['user'] = $this->db->get_where('tb_user', ['id' => $this->session->userdata('id')])->row_array();
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('pembayaran', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            date_default_timezone_set('Asia/Jakarta');
+            $id_user = $this->session->userdata('id');
+            $nama = $this->input->post('nama');
+            $alamat = $this->input->post('alamat');
+            $no_hape = $this->input->post('no_telp');
+            $kurir = $this->input->post('kurir');
+            $no_invoice = date('YmdHis');
+            $invoice = array(
+                'id_user' => $id_user,
+                'no_invoice' => $no_invoice,
+                'nama' => $nama,
+                'alamat' => $alamat,
+                'no_hape' => $no_hape,
+                'kurir' => $kurir,
+                'tgl_pesan' => date('Y-m-d H:i:s'),
+                'batas_bayar' => date('Y-m-d H:i:s', mktime(
+                    date('H'),
+                    date('i'),
+                    date('s'),
+                    date('m'),
+                    date('d') + 1,
+                    date('Y')
+                )),
+                'is_paid' => false,
+            );
+            $this->Model_invoice->index($invoice); //save invoice
+
+            $this->cart->destroy();
+            redirect('dashboard/bayaran');
+        }
     }
     public function history()
     {
