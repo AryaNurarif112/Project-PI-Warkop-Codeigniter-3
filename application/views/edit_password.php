@@ -30,7 +30,6 @@
             <?= form_close() ?>
         </div>
     </div>
-
 </div>
 
 <div align="center">

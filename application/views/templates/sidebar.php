@@ -179,7 +179,7 @@
                                 </div>
                             </li>
                         <?php } else { ?>
-                            <ul class="na navbar-nav navbar-right mt-2 mr-4">
+                            <ul class="na navbar-nav navbar-right mt-4 mr-4">
                                 <li><?php echo anchor('auth/login', 'Login'); ?></li>
                             <?php } ?>
                             </ul>

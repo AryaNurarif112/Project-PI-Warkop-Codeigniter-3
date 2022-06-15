@@ -18,7 +18,8 @@
             <span class="sr-only">Next</span>
         </button>
     </div>
-
+</div>
+<div class="table-responsive">
     <h4>My Profile</h4>
     <table class="table table-bordered table-hover table-striped">
         <tr>
@@ -37,7 +38,7 @@
         </tr>
 </div>
 </table>
-<div align="right">
+<div align="center">
     <a href="<?php echo base_url('welcome') ?>">
         <div class="btn btn-sm btn-dark">Lanjutkan Belanja</div>
         <a href="<?php echo base_url('dashboard/edit_profile') ?>">
