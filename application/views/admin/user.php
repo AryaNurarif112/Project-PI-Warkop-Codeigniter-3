@@ -6,7 +6,6 @@
                 <td>Id User</td>
                 <td>Nama</td>
                 <td>Username</td>
-                <td>Password</td>
                 <td>Role Id</td>
                 <td>Tanggal Pembuatan</td>
                 <td>Rubah Aksi</td>
@@ -17,7 +16,6 @@
                     <td><?php echo $role['id'] ?></td>
                     <td><?php echo $role['nama']; ?></td>
                     <td><?php echo $role['username']; ?></td>
-                    <td><?php echo $role['password']; ?></td>
                     <td><?php echo $role['role_id']; ?></td>
                     <td><?php echo date('d F Y, H:i:s', $role['date_created']); ?></td>
                     <td>
@@ -31,6 +29,7 @@
                                 <?php } else { ?>
                                     <a class="dropdown-item" href="invoice/roleunpaid/<?= $role['id'] ?>">User</a>
                                 <?php } ?>
+                                <a class="dropdown-item bg-danger" href="invoice/hapus_user/<?= $role['id'] ?>" style=color:white>Hapus</a>
                             </div>
                         </div>
                     </td>
