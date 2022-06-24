@@ -61,7 +61,7 @@
                     <span>Hotdog</span></a>
             </li>
             <br>
-            <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>
+            <a class="btn btn-danger" href="<?= base_url('auth/logout'); ?>">Logout</a>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -151,7 +151,7 @@
                         </li>
                         <?php if ($this->session->userdata('username')) { ?>
                             <li class="nav-item dropdown no-arrow">
-                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user fa-sm"></i> &nbsp;
                                     <span class="d-none d-lg-inline text-gray-800 large">Hi <?= $user['nama'] ?></span>
                                 </a>
@@ -159,7 +159,7 @@
                                 <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="userDropdown">
                                     <a class="dropdown-item" href="<?= base_url('dashboard/my_profile'); ?>">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-800 large"></i>
-                                        My Profile
+                                        Profile Saya
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="<?= base_url('dashboard/edit_profile') ?>">
@@ -169,7 +169,7 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="<?= base_url('dashboard/edit_password') ?>">
                                         <i class="fa-solid fa-key fa-fw mr-2 text-gray-800 large"></i>
-                                        Change Password
+                                        Ganti Password
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">
