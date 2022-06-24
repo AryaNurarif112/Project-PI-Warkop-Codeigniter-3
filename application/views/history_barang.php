@@ -57,6 +57,9 @@
         </table>
 
         <div align="right">
+            <a href="<?php echo base_url('dashboard/history') ?>">
+                <div class="btn btn-sm btn-info">Kembali History</div>
+            </a>
             <a href="<?php echo base_url('welcome') ?>">
                 <div class="btn btn-sm btn-dark">Lanjutkan Belanja</div>
                 <a href="<?php echo base_url('dashboard/history') ?>">
@@ -64,6 +67,7 @@
                     <a href="<?php echo base_url('dashboard/pembayaran') ?>">
                         <div class="btn btn-sm btn-success">Pembayaran</div>
                     </a>
+
         </div>
     </div>
 </div>
