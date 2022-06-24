@@ -25,6 +25,23 @@ class Invoice extends CI_Controller
         $this->load->view('templates_admin/footer', $data);
     }
 
+    public function hapus_invoice($id)
+    {
+        $where = array(
+            'id' => $id
+        );
+        $this->Model_barang->hapus_invoice($where, 'tb_invoice');
+        redirect('admin/invoice');
+    }
+    public function hapus_user($id)
+    {
+        $where = array(
+            'id' => $id
+        );
+        $this->Model_barang->hapus_user($where, 'tb_user');
+        redirect('admin/Data_user');
+    }
+
     public function detail($id_invoice)
     {
         $data['title'] = 'Admin Invoice Detail';
@@ -48,7 +65,6 @@ class Invoice extends CI_Controller
         $this->Model_invoice->setunpaid($id_invoice);
         redirect('admin/invoice');
     }
-
 
     public function rolepaid($tb_user)
     {
