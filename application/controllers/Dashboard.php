@@ -192,7 +192,6 @@ class Dashboard extends CI_Controller
             $nama = $this->input->post('nama');
             $alamat = $this->input->post('alamat');
             $no_hape = $this->input->post('no_telp');
-            $kurir = $this->input->post('kurir');
             $no_invoice = date('YmdHis');
             $invoice = array(
                 'id_user' => $id_user,
@@ -200,7 +199,6 @@ class Dashboard extends CI_Controller
                 'nama' => $nama,
                 'alamat' => $alamat,
                 'no_hape' => $no_hape,
-                'kurir' => $kurir,
                 'tgl_pesan' => date('Y-m-d H:i:s'),
                 'batas_bayar' => date('Y-m-d H:i:s', mktime(
                     date('H'),
