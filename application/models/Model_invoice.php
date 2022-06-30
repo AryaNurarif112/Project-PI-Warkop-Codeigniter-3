@@ -77,6 +77,19 @@ class Model_invoice extends CI_Model
         return $query->result();
     }
 
+    //untuk mendelete invoice
+    public function hapus_invoice($where, $table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+    //untuk mendelete user
+    public function hapus_user($where, $table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+
     //untuk merubah status sudah dibayar atau belum
     public function setpaid($idinv)
     {
