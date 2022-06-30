@@ -30,7 +30,7 @@ class Invoice extends CI_Controller
         $where = array(
             'id' => $id
         );
-        $this->Model_barang->hapus_invoice($where, 'tb_invoice');
+        $this->Model_invoice->hapus_invoice($where, 'tb_invoice');
         redirect('admin/invoice');
     }
     public function hapus_user($id)
@@ -38,7 +38,7 @@ class Invoice extends CI_Controller
         $where = array(
             'id' => $id
         );
-        $this->Model_barang->hapus_user($where, 'tb_user');
+        $this->Model_invoice->hapus_user($where, 'tb_user');
         redirect('admin/Data_user');
     }
 
