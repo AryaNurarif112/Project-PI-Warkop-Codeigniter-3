@@ -106,6 +106,7 @@
                                     <li><?php echo anchor('auth/login', 'Login'); ?></li>
                                 <?php } ?>
                             </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End of Topbar -->

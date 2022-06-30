@@ -30,9 +30,9 @@
                                 <a class="dropdown-item" href="invoice/detail/<?= $inv->id ?>">Detail</a>
 
                                 <?php if ($inv->is_paid == 0) { ?>
-                                    <a class="dropdown-item" href="invoice/setpaid/<?= $inv->id ?>">Tandai sudah bayar</a>
+                                    <a class="dropdown-item bg-success" href="invoice/setpaid/<?= $inv->id ?>" style=color:white>Tandai sudah bayar</a>
                                 <?php } else { ?>
-                                    <a class="dropdown-item" href="invoice/setunpaid/<?= $inv->id ?>">Tandai belum bayar</a>
+                                    <a class="dropdown-item" href="invoice/setunpaid/<?= $inv->id ?>" style=color:red>Tandai belum bayar</a>
                                 <?php } ?>
                                 <a class="dropdown-item bg-danger" href="invoice/hapus_invoice/<?= $inv->id ?>" style=color:white>Hapus</a>
                             </div>
