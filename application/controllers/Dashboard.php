@@ -160,6 +160,8 @@ class Dashboard extends CI_Controller
         $this->form_validation->set_rules(
             'nama',
             'Nama',
+            'required|max_length[25]',
+            array('max_length' => 'Nama maksimal 25 kata'),
             'required|alpha_numeric',
             array('required' => 'Nama tidak boleh kosong')
         );
@@ -174,6 +176,8 @@ class Dashboard extends CI_Controller
         $this->form_validation->set_rules(
             'no_telp',
             'No Hape',
+            'required|max_length[13]',
+            array('max_length' => 'No telp maksimal 13 huruf'),
             'required|numeric',
             array(
                 'required' => 'No telp tidak boleh kosong'

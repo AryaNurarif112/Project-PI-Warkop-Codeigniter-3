@@ -49,7 +49,7 @@
                 return $hari;
             }
 
-            //fungsi untuk merubah format tanggal menjadi tanggal indonesia
+            // fungsi untuk merubah format tanggal menjadi tanggal indonesia
             function tanggal_indo()
             {
                 $bulan  = [1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
@@ -59,6 +59,25 @@
                 return $exp[0] . ' ' . $bulan[(int) $exp[1]] . ' ' . $exp[2];
             }
             ?>
+            <script>
+                function startTime() {
+                    const today = new Date();
+                    let h = today.getHours();
+                    let m = today.getMinutes();
+                    let s = today.getSeconds();
+                    m = checkTime(m);
+                    s = checkTime(s);
+                    document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+                    setTimeout(startTime, 1000);
+                }
+
+                function checkTime(i) {
+                    if (i < 10) {
+                        i = "0" + i
+                    }; // add zero in front of numbers < 10
+                    return i;
+                }
+            </script>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -146,7 +165,7 @@
                             </div>
                         </div>
                     </form>
-                    <a class="nav-link text-primary" tabindex="-1" aria-disabled="true"><?= hari_ini(); ?>, <?= tanggal_indo(); ?></a>
+                    <a class="nav-link text-primary" tabindex="-1" aria-disabled="true" id="txt"><?= hari_ini(); ?>, <?= tanggal_indo(); ?></a>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
