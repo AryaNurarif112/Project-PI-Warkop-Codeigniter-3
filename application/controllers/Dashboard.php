@@ -71,8 +71,8 @@ class Dashboard extends CI_Controller
             $this->load->view('edit_password', $data);
             $this->load->view('templates/footer',);
         } else {
-            $current_password = $this->input->post('current_password');
-            $new_password = $this->input->post('new_password1');
+            $current_password = md5($this->input->post('current_password'));
+            $new_password = md5($this->input->post('new_password1'));
 
             $cek_password = $this->db->get_where('tb_user', array('id' => $this->session->userdata('id'), 'password' => $current_password));
             // password salah

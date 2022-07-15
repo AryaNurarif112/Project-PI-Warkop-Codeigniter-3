@@ -19,7 +19,7 @@ class Registrasi extends CI_Controller
                 'id' => '',
                 'nama' => $this->input->post('nama'),
                 'username' => $this->input->post('username'),
-                'password' => $this->input->post('password_1'),
+                'password' => md5($this->input->post('password_1')),
                 'role_id' => 2,
                 'date_created' => time(),
             );
