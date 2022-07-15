@@ -12,72 +12,7 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Warkop Suka-Suka</div>
             </a>
-            <?php
-            defined('BASEPATH') or exit('No direct script access allowed');
-
-            //fungsi untuk merubah nama hari menjadi hari indonesia
-            function hari_ini()
-            {
-                switch (date('D')) {
-                    case 'Sun':
-                        $hari = 'Minggu';
-                        break;
-                    case 'Mon':
-                        $hari = 'Senin';
-                        break;
-                    case 'Tue':
-                        $hari = 'Selasa';
-                        break;
-                    case 'Wed':
-                        $hari = 'Rabu';
-                        break;
-                    case 'Thu':
-                        $hari = 'Kamis';
-                        break;
-                    case 'Fri':
-                        $hari = 'Jum\'at';
-                        break;
-                    case 'Sat':
-                        $hari = 'Sabtu';
-                        break;
-
-                    default:
-                        $hari = 'Hari tidak diketahui';
-                        break;
-                }
-
-                return $hari;
-            }
-
-            // fungsi untuk merubah format tanggal menjadi tanggal indonesia
-            function tanggal_indo()
-            {
-                $bulan  = [1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-                date_default_timezone_set('Asia/Jakarta');
-                $timestamp = time();
-                $exp    = explode('-', date('d-m-Y, H:i:s', $timestamp));
-                return $exp[0] . ' ' . $bulan[(int) $exp[1]] . ' ' . $exp[2];
-            }
-            ?>
-            <script>
-                function startTime() {
-                    const today = new Date();
-                    let h = today.getHours();
-                    let m = today.getMinutes();
-                    let s = today.getSeconds();
-                    m = checkTime(m);
-                    s = checkTime(s);
-                    document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
-                    setTimeout(startTime, 1000);
-                }
-
-                function checkTime(i) {
-                    if (i < 10) {
-                        i = "0" + i
-                    }; // add zero in front of numbers < 10
-                    return i;
-                }
-            </script>
+            
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -165,7 +100,6 @@
                             </div>
                         </div>
                     </form>
-                    <a class="nav-link text-primary" tabindex="-1" aria-disabled="true" id="txt"><?= hari_ini(); ?>, <?= tanggal_indo(); ?></a>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -206,7 +140,7 @@
                                     </li>
                                     <li class="mb-2 mr-3 nav-item text-primary">
 
-                                        <a href="<?php echo ('dashboard/detail_keranjang') ?>" class="nav-link text-primary">
+                                        <a href="<?php echo base_url('dashboard/detail_keranjang') ?>" class="nav-link text-primary">
                                             <img src="<?= base_url('assets/img/keranjang.svg') ?>" /> &nbsp
                                             <?= $this->cart->total_items(); ?> items
                                         </a>
