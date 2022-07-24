@@ -13,7 +13,7 @@
             <td><?php echo $user['nama']; ?></td>
             <td><?php echo $user['username']; ?></td>
             <td><?php echo $user['role_id']; ?></td>
-            <td><?php echo date('d F Y, H:i:s', $user['date_created']); ?></td>
+            <td><?php echo date('D d F Y, g:i a', $user['date_created']); ?></td>
         </tr>
 </div>
 </table>
