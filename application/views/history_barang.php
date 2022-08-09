@@ -64,7 +64,7 @@
                 <div class="btn btn-sm btn-dark">Lanjutkan Belanja</div>
                 <a href="<?php echo base_url('dashboard/history') ?>">
                     <div class="btn btn-sm btn-primary">History Belanja</div>
-                    <a href="<?php echo base_url('dashboard/pembayaran') ?>">
+                    <a href="<?php echo base_url('dashboard/bayaran') ?>">
                         <div class="btn btn-sm btn-success">Pembayaran</div>
                     </a>
 
